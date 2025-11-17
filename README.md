@@ -1,84 +1,152 @@
-# Attendance System
-Attendance System is a JavaFX application that allows users to manage and track the attendance of students or employees. It uses MySQL as the database and Maven as the build tool. It is developed using IntelliJ IDEA as the IDE.
+🎓 Multi-Teacher Attendance System (JavaFX + MySQL)
 
-## Features
-- **Login page:** Users can log in to the application using their username and password. The login information is verified with the database
-- **Dashboard:** To view graphs and charts of absent/present
-- **Add Student:** To add student to the system and perform CRUD operation
-- **Available course:** To add courses in the system
-- **Attendance:** To Mark Entry and Exit Time for attendance
+A beginner-friendly attendance management system where:
+
+👑 Admins can manage everything
+👨‍🏫 Teachers can only manage their own students & subjects
+
+Built using JavaFX + MySQL + Maven, designed so even beginners can install and run it easily.
+
+✨ Features
+
+✔ Admin & Teacher Login
+✔ Add / Edit / Delete Students
+✔ Subject & Course Management
+✔ Auto-Enrollment Based on Course + Semester
+✔ Daily Attendance & History Viewer
+✔ Dashboard with Stats
+✔ Secure Passwords (BCrypt)
+✔ Works in IntelliJ OR VS Code
+
+🧰 What You Need Before Running
+Tool	Why You Need It
+Java 17+	To run the project
+Maven	To download libraries
+MySQL (XAMPP or MySQL Workbench)	To store attendance data
+IDE: IntelliJ OR VS Code	To run the program
+(Optional) SceneBuilder	To edit FXML UI visually
+📦 1. Download the Project
+🟢 Option A: Git (Recommended)
+git clone https://github.com/YOUR_USERNAME/Multi-Teacher-Student-Attendance-System.git
+
+🔵 Option B: No Git
+
+Click Code → Download ZIP → Extract it.
+
+🗄️ 2. Database Setup (SUPER EASY GUIDE)
+✔ Works with BOTH MySQL Workbench & XAMPP phpMyAdmin
+Step 1: Create Database
+
+Open MySQL Workbench and run:
+
+CREATE DATABASE attendance_system;
 
 
-## Software Requirements
-### Before you dive in, make sure to download and install the following:
+OR in phpMyAdmin:
 
-1. [Git](https://git-scm.com/)
-2. [SceneBuilder](https://gluonhq.com/products/scene-builder/)
-3. [IntelliJ IDEA IDE](https://www.jetbrains.com/idea/)
-4. [XAMPP](https://www.apachefriends.org/index.html)
+Open localhost/phpmyadmin
 
-## Installation
-### Configuring SceneBuilder
-#### Before opening the `view.fxml` files in SceneBuilder, you need to add essential dependencies.
+Click “New”
 
-1. Add the following dependencies to SceneBuilder:
-   1. `io.github.palexdev:materialfx:11.16.1`
-   2. `org.kordamp.ikonli:ikonli-fontawesome-pack:12.3.1`
-   3. `org.kordamp.ikonli:ikonli-fontawesome5-pack:12.3.1`
-   4. `org.kordamp.ikonli:ikonli-javafx:12.3.1`
+Enter: attendance_system
 
-2. To add these dependencies, follow these steps within SceneBuilder:
-   1. Select the **Empty** desktop application option.
-   2. On the left panel, click the gear icon next to "Library" and the search bar.
-   3. Choose **JAR/FXML Manager**.
-   4. Click **Search repositories**.
-   5. Search and add the dependencies one by one:
-      1. `io.github.palexdev:materialfx`
-      2. `org.kordamp.ikonli:ikonli-fontawesome-pack`
-      3. `org.kordamp.ikonli:ikonli-fontawesome5-pack`
-      4. `org.kordamp.ikonli:ikonli-javafx`
-   6. Select each item from the search results and click **Add Jar**.
-   7. Choose **Import Component**.
-   8. Repeat these steps until all dependencies are added.
+Click Create
 
-### Setting Up IntelliJ IDEA IDE
-1. Open IntelliJ IDEA and select **Get from VCS**.
-2. In the "GitHub" tab, log in to your GitHub account.
-3. Click the "Repository URL" tab and paste the project URL: `https://github.com/XAPHNE/AttendanceSystem`. Then click **Clone**.
+Step 2: Import the SQL File
 
-### Configuring XAMPP
-1. Start both the MySQL and Apache servers.
-2. Open a web browser and navigate to [`http://localhost/phpmyadmin/index.php`](http://localhost/phpmyadmin/index.php).
-3. Click on **SQL** in the top navigation panel.
-4. Copy and paste the following SQL code:
+File location in project:
 
-   ```sql
-   CREATE DATABASE attendance_system;
-   CREATE USER 'admin'@'localhost' IDENTIFIED BY 'admin';
-   GRANT ALL PRIVILEGES ON attendance_system.* TO 'admin'@'localhost';
-   ```
-   **NOTE:** Ignore the above `CREATE USER 'admin'@'localhost' IDENTIFIED BY 'admin';` line if you already have a user in your MySQL server named as **admin**
+database/attendance_system.sql
 
-5. Refresh the page or just the database panel on the left and select the **attendance_system** database from the panel.
-6. Click on **Import** in the top navigation panel.
-7. Select **Choose file** and navigate to the `src/main/resources/attendance_system.sql` file within the project directory. Then click **Import**.
+⭐ MySQL Workbench:
 
-### Running the Project
-You can run the project by pressing **`Shift + F10`** on the `src/main/java/com/bsmi/attendancesystem/AttendanceApplication.java` file.
+✔ Server → Data Import
+✔ Import from Self-Contained File
+✔ Select attendance_system.sql
+✔ Start Import
 
-Now, enjoy the benefits of our Attendance System!
+⭐ phpMyAdmin:
 
-## Screenshots
+✔ Click database
+✔ Import tab
+✔ Select file
+✔ Click Go
 
-![Attendance System Screenshot](https://user-images.githubusercontent.com/127822494/257903527-0e72b5ec-21c2-4c30-87fc-3f47bed03d33.png "Login Screen")
+🎉 Your database is now ready!
 
-## License
-This project is licensed under the GNU General Public License v3.0 - see the [LICENSE](/LICENSE) file for details.
+🔌 3. Update Database Settings (IMPORTANT)
 
-For more information about the GNU GPL v3.0 license, please visit the [GNU website](https://www.gnu.org/licenses/gpl-3.0.en.html).
+Open this file:
 
-## Author
-[Subhankar Sarkar](https://xaphne.github.io/about)
+src/main/java/com/bsmi/attendancesystem/DatabaseConnection.java
 
-## Contributor
-[Prithiraj Rabha](https://github.com/prithirabha)
+If you use MySQL root user:
+String databaseUser = "root";
+String databasePassword = "";
+
+If you used:
+username = admin
+password = admin
+
+
+then you do NOT need to change the file.
+
+▶️ 4. Run the Application
+🟢 IntelliJ IDEA
+
+Open project
+
+Let Maven finish
+
+Right-click:
+
+src/main/java/com/bsmi/attendancesystem/AttendanceApplication.java
+
+
+Click Run
+
+🔵 VS Code
+
+Install Java Extension Pack
+
+Open project folder
+
+Open AttendanceApplication.java
+
+Click Run (play ▶ button)
+
+🔑 Default Login Accounts
+Role	Username	Password
+Admin	admin	admin123
+Teacher	teacher1	teacher123
+
+👉 These are controlled INSIDE the database, not MySQL.
+
+📁 Project Structure (Simple View)
+project/
+├── src/
+│   ├── main/java/com/bsmi/attendancesystem/
+│   └── main/resources/
+├── database/
+│   └── attendance_system.sql
+├── screenshots/
+├── pom.xml
+└── README.md
+
+🛠️ Common Problems & Fixes
+❌ Database not connecting
+
+✔ Make sure MySQL service is running
+✔ Check DB username/password in DatabaseConnection.java
+✔ Database name MUST be: attendance_system
+
+❌ JavaFX not found
+
+✔ You must use JDK 17 or above
+✔ Make sure Maven finished downloading dependencies
+✔ Try mvn clean install
+
+❌ SceneBuilder not loading FXML
+
+✔ Install SceneBuilder
+✔ Open .fxml files from /src/main/resources/
