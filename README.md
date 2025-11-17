@@ -23,7 +23,7 @@ Admins can manage everything. Teachers can only access their assigned subjects &
 
 ## Download the Project
 ### Option 1: Using Git
-git clone https://github.com/YOUR_USERNAME/Multi-Teacher-Student-Attendance-System.git
+git clone https://github.com/jeffrin-samuel/Multi-Teacher-Student-Attendance-System.git
 
 ### Option 2: Without Git
 Download ZIP → Extract
